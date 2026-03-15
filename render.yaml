@@ -3,6 +3,7 @@ services:
     name: clickhouse
     env: docker
     plan: standard
+    region: frankfurt
     autoDeploy: false
     disk:
       name: data
