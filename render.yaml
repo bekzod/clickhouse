@@ -2,7 +2,7 @@ services:
   - type: pserv
     name: clickhouse
     env: docker
-    plan: standard
+    plan: pro
     region: frankfurt
     autoDeploy: false
     disk:
