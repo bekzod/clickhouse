@@ -6,4 +6,54 @@
     <merge_tree>
         <max_bytes_to_merge_at_max_space_in_pool>2147483648</max_bytes_to_merge_at_max_space_in_pool>
     </merge_tree>
+
+    <!-- Keep the most useful operational history longest. -->
+    <text_log>
+        <level>warning</level>
+        <ttl>event_date + INTERVAL 14 DAY DELETE</ttl>
+    </text_log>
+    <error_log>
+        <ttl>event_date + INTERVAL 14 DAY DELETE</ttl>
+    </error_log>
+    <query_log>
+        <ttl>event_date + INTERVAL 14 DAY DELETE</ttl>
+    </query_log>
+
+    <!-- Storage maintenance and asynchronous insert diagnostics. -->
+    <part_log>
+        <ttl>event_date + INTERVAL 7 DAY DELETE</ttl>
+    </part_log>
+    <asynchronous_insert_log>
+        <ttl>event_date + INTERVAL 7 DAY DELETE</ttl>
+    </asynchronous_insert_log>
+
+    <!-- Secondary query and scheduler diagnostics. -->
+    <query_thread_log>
+        <ttl>event_date + INTERVAL 3 DAY DELETE</ttl>
+    </query_thread_log>
+    <query_views_log>
+        <ttl>event_date + INTERVAL 3 DAY DELETE</ttl>
+    </query_views_log>
+    <background_schedule_pool_log>
+        <ttl>event_date + INTERVAL 3 DAY DELETE</ttl>
+    </background_schedule_pool_log>
+
+    <!-- High-volume profiling and metrics only need a short window. -->
+    <trace_log>
+        <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+    </trace_log>
+    <processors_profile_log>
+        <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+    </processors_profile_log>
+    <query_metric_log>
+        <collect_interval_milliseconds>60000</collect_interval_milliseconds>
+        <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+    </query_metric_log>
+    <metric_log>
+        <collect_interval_milliseconds>60000</collect_interval_milliseconds>
+        <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+    </metric_log>
+    <asynchronous_metric_log>
+        <ttl>event_date + INTERVAL 1 DAY DELETE</ttl>
+    </asynchronous_metric_log>
 </clickhouse>
